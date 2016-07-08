@@ -20,15 +20,16 @@ class InventoryRepository
 
 	public function searchInventories($name)
 	{
-		return Inventory::where('name', $this->condition, "%$name%")->paginate(10);
+		return $this->getInventory($name)->paginate(10);
 	}
 
 	public function searchWithCategory($name, $cat)
 	{
-		$category = Category::where('name', $cat)->get()->first();
+		return Category::where('name', $cat)->get()->first()->inventories()->paginate(10);
+	}
 
-		$inventories = $category->inventories;
-
-		return Inventory::where('name', $this->condition, "%$name%")->where('category_id', $category->id)->paginate(10);
+	private function getInventory($name)
+	{
+		return Inventory::where('name', $this->condition, "%$name%");
 	}
 }
