@@ -24,7 +24,7 @@ $factory->define(Laris\User::class, function (Faker\Generator $faker) {
 
 $factory->define(Laris\Category::class, function (Faker\Generator $faker) {
 	return [
-		'name' => $faker->word,
+		'name' => $faker->safeEmail,
 	];
 });
 

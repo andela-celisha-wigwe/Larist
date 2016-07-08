@@ -19,9 +19,14 @@ class InventoriesController extends Controller
 
     public function index(SearchInventoriesRequest $request)
     {
+    	$inventories = $this->inventoryRepo->searchInventories($request->name);
+
     	$data = [
-    		'inventories' => $this->inventoryRepo->searchInventories($request->name)
+    		'inventories' => $inventories,
+    		'paging' => $inventories->appends(['name' => $request->name])->links(),
     	];
+
+
 
     	return view('welcome')->with($data);
     }

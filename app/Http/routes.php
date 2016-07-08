@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/inventories', [
+Route::get('/search', [
 	'uses' => 'InventoriesController@index',
 	'as' => 'all.inventories'
 ]);
