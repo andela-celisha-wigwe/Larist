@@ -40,7 +40,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     public function createCategory()
     {
         $category = factory(Laris\Category::class)->create([
-            'name'      => 'roy',
+            'name'      => 'Cat1',
         ]);
         
         return $category;

@@ -19,6 +19,6 @@ class Category extends Model
      */
     public function inventories()
     {
-    	return $this->belongsTo(Inventory::class);
+    	return $this->hasMany(Inventory::class);
     }
 }
