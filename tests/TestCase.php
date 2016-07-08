@@ -29,4 +29,36 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         
         return $this;
     }
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        Artisan::call('migrate');
+    }
+
+    public function createCategory()
+    {
+        $category = factory(Laris\Category::class)->create([
+            'name'      => 'roy',
+        ]);
+        
+        return $category;
+    }
+
+    public function createInventory()
+    {
+        $inventory = factory(Laris\Inventory::class)->create([
+            'name'      => 'Order ABC',
+            'category_id'  => 1,
+        ]);
+
+        return $inventory;
+    }
+
+    public function createModels()
+    {
+        $this->createCategory();
+        $this->createInventory();
+    }
 }
