@@ -22,4 +22,11 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    public function countElements($selector, $number)
+    {
+        $this->assertCount($number, $this->crawler->filter($selector));
+        
+        return $this;
+    }
 }
