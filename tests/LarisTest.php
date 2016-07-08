@@ -26,18 +26,34 @@ class LarisTest extends TestCase
 		$this->visit('/')
 		->type('Order', 'name')
 		->press('search-button')
-		->seePageIs('/search?name=Order')
+		->seePageIs('/search?category=&name=Order')
 		->see('Order ABC');
 	}
 
-	public function ntestSearchInputFailsValidationAndIsRequried()
+	public function testSearchByCategory()
 	{
 		$this->createModels();
 
+		$category = factory(Laris\Category::class)->create([
+            'name'      => 'Cat2',
+        ]);
+
+        $inventory = factory(Laris\Inventory::class)->create([
+            'name'      => 'Order XYZ',
+            'category_id'  => 2,
+        ]);
+
+        $inventory = factory(Laris\Inventory::class)->create([
+            'name'      => 'Order LMN',
+            'category_id'  => 2,
+        ]);
+
 		$this->visit('/')
-		->type('', 'name')
+		->select('Cat2', 'category')
 		->press('search-button')
-		->seePageIs('/')
-		->see('The name field is required.');
+		->seePageIs('/search?category=Cat2&name=')
+		->see('Order XYZ')
+		->see('Order LMN')
+		->dontSee('Order ABC');
 	}
 }

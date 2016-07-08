@@ -4,7 +4,6 @@ namespace Laris\Http\Controllers;
 
 use Laris\Inventory;
 use Illuminate\Http\Request;
-use Laris\Http\Requests\SearchInventoriesRequest;
 use Laris\Http\Repositories\InventoryRepository;
 use Laris\Http\Requests;
 
@@ -17,9 +16,14 @@ class InventoriesController extends Controller
     	$this->inventoryRepo = $inventoryRepo;
     }
 
-    public function index(SearchInventoriesRequest $request)
+    public function index(Request $request)
     {
-    	$inventories = $this->inventoryRepo->searchInventories($request->name);
+    	if( $request->category ) {
+    		$inventories = $this->inventoryRepo->searchWithCategory($request->name, $request->category);
+    	} else {
+    		$inventories = $this->inventoryRepo->searchInventories($request->name);
+    	}
+    	
 
     	$data = [
     		'inventories' => $inventories,

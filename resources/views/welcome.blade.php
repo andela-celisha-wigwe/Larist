@@ -69,7 +69,12 @@
 
                     <button class="btn btn-primary" id="search-button"> <i class="fa fa-search"> </i> Search</button>
 
-                    <select name="by-category" id="by-category"></select>
+                    <select name="category" id="by-category">
+                        <option value=""> Select Category </option>
+                        @foreach(Laris\Category::all() as $category)
+                            <option value="{{ $category->name }}"> {{ $category->name }} </option>
+                        @endforeach
+                    </select>
                 </form>
 
                 @if( isset($inventories) && $inventories->count() > 0)
