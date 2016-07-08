@@ -38,7 +38,16 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">
+                        <form class="">
+                            <div class="panel panel-heading">Search</div>
+
+                            <input type="text" required placeholder="Enter a name" name="by-name" id="by-name">
+
+                            <button class="btn btn-primary" id="search-button"> <i class="fa fa-search"> </i> Search</button>
+                        </form>
+
+                </div>
             </div>
         </div>
     </body>
