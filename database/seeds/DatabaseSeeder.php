@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
         factory(Laris\Category::class, 5)->create();
 
-        factory(Laris\Inventory::class, 5)->create();
+        factory(Laris\Inventory::class, 50)->create();
 
         Model::reguard();
     }

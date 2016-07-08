@@ -14,6 +14,6 @@ class InventoryRepository
 	{
 		$condition = env('DB_CONNECTION') == 'pgsql' ? 'ILIKE' : 'LIKE';
 
-		return Inventory::where('name', $condition, "%$name%")->get();
+		return Inventory::where('name', $condition, "%$name%")->paginate(10);
 	}
 }

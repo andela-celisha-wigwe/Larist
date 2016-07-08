@@ -4,6 +4,7 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
         <style>
             html, body {
@@ -16,7 +17,6 @@
                 width: 100%;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
             }
 
             .container {
@@ -33,11 +33,22 @@
             .title {
                 font-size: 96px;
             }
+
+            .each-inventory {
+                font-size: 120%;
+                text-align: left;
+                padding: 15px;
+                border-bottom: solid 1px rgba(51, 122, 183, 0.35);
+                cursor: pointer;
+            }
+
+            .each-inventory:hover {
+                background: rgb(218, 231, 242);
+            }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="content">
 
                 @if ($errors->count() > 0)
                      <div class="alert alert-danger">
@@ -62,16 +73,20 @@
                 </form>
 
                 @if( isset($inventories) && $inventories->count() > 0)
-                    <div class="row">
+                    <div>
                         @foreach($inventories as $inventory)
-                            <div class="col-md-12">
+                            <div class="each-inventory">
                                 {{ $inventory->name }}
                             </div>
                         @endforeach
                     </div>
+
+
+
+                    {{ $paging }}
+
                 @endif
                 
-            </div>
         </div>
     </body>
 </html>
