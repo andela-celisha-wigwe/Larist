@@ -15,5 +15,7 @@ class LarisTest extends TestCase
 		$this->countElements('#by-name', 1);
 
 		$this->countElements('#search-button', 1);
+
+		$this->countElements('#by-category', 1);
 	}
 }

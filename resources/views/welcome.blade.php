@@ -45,6 +45,8 @@
                             <input type="text" required placeholder="Enter a name" name="by-name" id="by-name">
 
                             <button class="btn btn-primary" id="search-button"> <i class="fa fa-search"> </i> Search</button>
+
+                            <select name="by-category" id="by-category"></select>
                         </form>
 
                 </div>
