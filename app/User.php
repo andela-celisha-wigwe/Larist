@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Laris;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
