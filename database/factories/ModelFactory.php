@@ -19,3 +19,19 @@ $factory->define(Laris\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+
+$factory->define(Laris\Category::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->word,
+	];
+});
+
+
+$factory->define(Laris\Inventory::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->word,
+		'category_id' => rand(1,5),
+	];
+});
